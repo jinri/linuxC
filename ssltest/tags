@@ -1,0 +1,33 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+LISTEN_BACKLOG	ssl_mid.c	28;"	d	file:
+MAXBUF	ssl_client.c	28;"	d	file:
+MAXBUF	ssl_server.c	30;"	d	file:
+SSL_Error	ssl_mid.c	/^void SSL_Error(char *custom_string) {$/;"	f
+SSL_Warning	ssl_mid.c	/^void SSL_Warning(char *custom_string) {$/;"	f
+SSL_init	ssl_mid.c	/^void SSL_init() $/;"	f
+SSL_terminal	ssl_mid.c	/^void SSL_terminal(SSL *ssl) {$/;"	f
+SSL_to_client_init	ssl_mid.c	/^SSL* SSL_to_client_init(int socket, X509 *cert, EVP_PKEY *key) {$/;"	f
+SSL_to_server_init	ssl_mid.c	/^SSL* SSL_to_server_init(int socket) $/;"	f
+ShowCerts	ssl_client.c	/^void ShowCerts(SSL * ssl) $/;"	f
+create_fake_certificate	ssl_mid.c	/^X509* create_fake_certificate(SSL* ssl_to_server, EVP_PKEY *key) $/;"	f
+create_key	ssl_mid.c	/^EVP_PKEY* create_key() $/;"	f
+error	ssl_mid.c	33;"	d	file:
+get_socket_to_client	ssl_mid.c	/^int get_socket_to_client(int socket, struct sockaddr_in* original_server_addr) $/;"	f
+get_socket_to_server	ssl_mid.c	/^int get_socket_to_server(struct sockaddr_in* original_server_addr) $/;"	f
+main	dsa_signed.c	/^int main(int argc, char** argv) $/;"	f
+main	md5.c	/^int main(int argc, char** argv) $/;"	f
+main	rsa_crypto.c	/^int main(int argc, char** argv) $/;"	f
+main	rsa_keygen.c	/^int main() $/;"	f
+main	ssl_client.c	/^int main(int argc, char * *argv) $/;"	f
+main	ssl_mid.c	/^int main() $/;"	f
+main	ssl_server.c	/^int main(int argc, char * *argv) $/;"	f
+socket_to_client_init	ssl_mid.c	/^int socket_to_client_init(short int port) $/;"	f
+sum	ssl_mid.c	/^int sum = 1;$/;"	v
+timeout	ssl_mid.c	/^struct timeval timeout = { 0, 10000000 };$/;"	v	typeref:struct:timeval
+transfer	ssl_mid.c	/^int transfer(SSL *ssl_to_client, SSL *ssl_to_server) $/;"	f
+warning	ssl_mid.c	30;"	d	file:
