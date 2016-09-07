@@ -36,7 +36,7 @@ int main(int argc, char * *argv)
     struct sockaddr_in my_addr, their_addr;
     unsigned int myport, lisnum;
     char buf[MAXBUF + 1];
-	int on = 1;
+//	int on = 1;
     SSL_CTX * ctx;
     //指定监听端口
     if (argv[1]) 
@@ -109,17 +109,16 @@ int main(int argc, char * *argv)
     if (argv[3]) 
     {
         my_addr.sin_addr.s_addr = inet_addr(argv[3]);
-        //my_addr.sin_addr.s_addr = inet_addr("192.168.60.129");
     }
     else 
     {
         //如果用户没有指定监听端口，则默认监听0.0.0.0(任意IP)
         my_addr.sin_addr.s_addr = INADDR_ANY;
     }
-    if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (char *) &on, sizeof(on)) < 0)
-    {
-       perror(" set reuseaddr error!");
-    }
+  //  if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (char *) &on, sizeof(on)) < 0)
+  //  {
+  //     perror("reuseaddr error!");
+  //  }
     if (bind(sockfd, (struct sockaddr * ) &my_addr, sizeof(struct sockaddr)) == -1) 
     {
         perror("bind");

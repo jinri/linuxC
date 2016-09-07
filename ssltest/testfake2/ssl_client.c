@@ -41,7 +41,6 @@ void ShowCerts(SSL * ssl)
 		// 获取真实证书的公钥
         printf("真实证书公钥:");
 		pstPubKey = X509_get_pubkey(cert);
-        printf("%s\n",pstPubKey);
         printf("真实证书长度:");
 		len = EVP_PKEY_bits(pstPubKey);
         printf("bytes size = %d,bits size =%d\n",EVP_PKEY_size(pstPubKey) ,len);

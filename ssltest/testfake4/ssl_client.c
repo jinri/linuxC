@@ -69,15 +69,13 @@ void ShowCerts(SSL * ssl)
      FILE *fp;
      if ((fp = fopen("private.key", "r")) == NULL)
      {
-         perror("no private.key");
-		 exit(1);
+         perror("private.key");
      }   
      PEM_read_RSAPrivateKey(fp, &rsa, NULL, NULL);
          
      if ((fp = fopen("public.key", "r")) == NULL)
      {   
-        perror("no public.key");
-		exit(1);
+         perror("public.key");
      }   
      PEM_read_RSAPublicKey(fp, &rsa, NULL, NULL);
          
@@ -112,14 +110,13 @@ X509* create_fake_certificate(SSL* ssl_to_server, EVP_PKEY *key)
      X509_set_version(fake_x509, X509_get_version(server_x509));
      ASN1_INTEGER *a = X509_get_serialNumber(fake_x509);
      a->data[0] = a->data[0] + 1;
-     X509_NAME *issuer = X509_NAME_new();
-     X509_NAME_add_entry_by_txt(issuer, "CN", MBSTRING_ASC,
-             "http://www.cnblogs.com/", -1, -1, 0);
-     X509_NAME_add_entry_by_txt(issuer, "O", MBSTRING_ASC, "Thawte Consulting (Pty) Ltd.", -1, -1, 0);
-     X509_NAME_add_entry_by_txt(issuer, "OU", MBSTRING_ASC, "Thawte SGC CA", -1,
-             -1, 0);
+     X509_NAME *issuer =  X509_get_issuer_name(server_x509);
+  //   X509_NAME *issuer = X509_NAME_new();
+  //   X509_NAME_add_entry_by_txt(issuer, "CN", MBSTRING_ASC, "Thawte SGC CA", -1, -1, 0);
+  //   X509_NAME_add_entry_by_txt(issuer, "O", MBSTRING_ASC, "Thawte Consulting (Pty) Ltd.", -1, -1, 0);
+  //   X509_NAME_add_entry_by_txt(issuer, "OU", MBSTRING_ASC, "Thawte SGC CA", -1,-1, 0);
      X509_set_issuer_name(fake_x509, issuer);
-	 X509_set_pubkey(fake_x509, key);  
+	 X509_set_pubkey(fake_x509, key);
      X509_sign(fake_x509, key, EVP_sha1());
  
      return fake_x509;
@@ -135,7 +132,7 @@ int main(int argc, char * *argv)
    
     X509 *pstRealCert;   // 服务器证书的句柄
 	X509 *fake_x509;     // 伪造证书的句柄
-	BIO  *b;
+	BIO  *b,*c;
 	int ret;
 	FILE * fpem;
     
@@ -197,32 +194,35 @@ if (argc != 3)
     else 
     {
         printf("Connected with %s encryption\n", SSL_get_cipher(ssl));
-        ShowCerts(ssl);
+//        ShowCerts(ssl);
     }
 	
     // 从服务器获得证书，并通过这个证书伪造一个假的证书
-    fake_x509 = create_fake_certificate(ssl, key);
-	//printf("the fake_x509 is %s\n",fake_x509);
+    //fake_x509 = create_fake_certificate(ssl, key);
 	
-    //pstRealCert = SSL_get_peer_certificate(ssl);  
-     /*if ( pstRealCert== NULL)
+    pstRealCert = SSL_get_peer_certificate(ssl);  
+     if ( pstRealCert== NULL)
      {
          SSL_Error("Fail to get the certificate from server!");
          exit(errno);
-     }*/
-     if (fake_x509 == NULL)
-     {
+     }
+	fpem = fopen("cert.pem","w+"); 
+	//	PEM_write_X509(fpem,pstRealCert);
+    	b = BIO_new(BIO_s_file());
+		BIO_set_fp(b,stdout,BIO_NOCLOSE);
+    	X509_print(b,pstRealCert );
+    	BIO_free(b);
+	fake_x509 = create_fake_certificate(ssl, key);
+	 if (fake_x509 == NULL)
+	{
          SSL_Error("Fail to  fake certificate!");
          exit(errno);
      }
-	fpem = fopen("cert.pem","w+"); 
-	//PEM_write_X509(stdout,pstRealCert);
-	PEM_write_X509(fpem, fake_x509);
-    //	b = BIO_new(BIO_s_file());
-    //	BIO_set_fp(b,stdout,BIO_NOCLOSE);
-    //	X509_print(b,pstRealCert );
-    //	BIO_free(b);
-
+	//  PEM_write_X509(fpem, fake_x509);
+    	c = BIO_new(BIO_s_file());
+		BIO_set_fp(c,stdout,BIO_NOCLOSE);
+    	X509_print(c,fake_x509);
+    	BIO_free(c);
     /* 接收对方发过来的消息，最多接收MAXBUF 个字节*/
     bzero(buffer, MAXBUF + 1);
     /* 接收服务器来的消息*/
@@ -255,7 +255,8 @@ if (argc != 3)
     SSL_free(ssl);
     close(sockfd);
     SSL_CTX_free(ctx);
-    X509_free(fake_x509);                                                                                         
+//    X509_free(fake_x509);                                                                                         
+    X509_free(pstRealCert);                                                                                         
     EVP_PKEY_free(key);
     return 0;
 }

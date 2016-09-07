@@ -5,20 +5,77 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 LISTEN_BACKLOG	ssl_mid.c	28;"	d	file:
+LISTEN_BACKLOG	testfake/ssl_mid.c	28;"	d	file:
+LISTEN_BACKLOG	testfake2/ssl_mid.c	28;"	d	file:
+LISTEN_BACKLOG	testfake3/ssl_mid.c	28;"	d	file:
 MAXBUF	ssl_client.c	28;"	d	file:
 MAXBUF	ssl_server.c	30;"	d	file:
+MAXBUF	testfake/ssl_client.c	28;"	d	file:
+MAXBUF	testfake/ssl_server.c	30;"	d	file:
+MAXBUF	testfake2/ssl_client.c	28;"	d	file:
+MAXBUF	testfake2/ssl_server.c	30;"	d	file:
+MAXBUF	testfake3/ssl_client.c	29;"	d	file:
+MAXBUF	testfake3/ssl_server.c	30;"	d	file:
 SSL_Error	ssl_mid.c	/^void SSL_Error(char *custom_string) {$/;"	f
+SSL_Error	testfake/ssl_client.c	/^void SSL_Error(char *custom_string) {$/;"	f
+SSL_Error	testfake/ssl_mid.c	/^void SSL_Error(char *custom_string) {$/;"	f
+SSL_Error	testfake2/ssl_client.c	/^void SSL_Error(char *custom_string) {$/;"	f
+SSL_Error	testfake2/ssl_mid.c	/^void SSL_Error(char *custom_string) {$/;"	f
+SSL_Error	testfake3/ssl_client.c	/^void SSL_Error(char *custom_string) {$/;"	f
+SSL_Error	testfake3/ssl_mid.c	/^void SSL_Error(char *custom_string) {$/;"	f
 SSL_Warning	ssl_mid.c	/^void SSL_Warning(char *custom_string) {$/;"	f
+SSL_Warning	testfake/ssl_client.c	/^void SSL_Warning(char *custom_string) {$/;"	f
+SSL_Warning	testfake/ssl_mid.c	/^void SSL_Warning(char *custom_string) {$/;"	f
+SSL_Warning	testfake2/ssl_client.c	/^void SSL_Warning(char *custom_string) {$/;"	f
+SSL_Warning	testfake2/ssl_mid.c	/^void SSL_Warning(char *custom_string) {$/;"	f
+SSL_Warning	testfake3/ssl_client.c	/^void SSL_Warning(char *custom_string) {$/;"	f
+SSL_Warning	testfake3/ssl_mid.c	/^void SSL_Warning(char *custom_string) {$/;"	f
 SSL_init	ssl_mid.c	/^void SSL_init() $/;"	f
+SSL_init	testfake/ssl_mid.c	/^void SSL_init() $/;"	f
+SSL_init	testfake2/ssl_mid.c	/^void SSL_init() $/;"	f
+SSL_init	testfake3/ssl_mid.c	/^void SSL_init() $/;"	f
 SSL_terminal	ssl_mid.c	/^void SSL_terminal(SSL *ssl) {$/;"	f
+SSL_terminal	testfake/ssl_mid.c	/^void SSL_terminal(SSL *ssl) {$/;"	f
+SSL_terminal	testfake2/ssl_mid.c	/^void SSL_terminal(SSL *ssl) {$/;"	f
+SSL_terminal	testfake3/ssl_mid.c	/^void SSL_terminal(SSL *ssl) {$/;"	f
 SSL_to_client_init	ssl_mid.c	/^SSL* SSL_to_client_init(int socket, X509 *cert, EVP_PKEY *key) {$/;"	f
+SSL_to_client_init	testfake/ssl_mid.c	/^SSL* SSL_to_client_init(int socket, X509 *cert, EVP_PKEY *key) {$/;"	f
+SSL_to_client_init	testfake2/ssl_mid.c	/^SSL* SSL_to_client_init(int socket, X509 *cert, EVP_PKEY *key) {$/;"	f
+SSL_to_client_init	testfake3/ssl_mid.c	/^SSL* SSL_to_client_init(int socket, X509 *cert, EVP_PKEY *key) {$/;"	f
 SSL_to_server_init	ssl_mid.c	/^SSL* SSL_to_server_init(int socket) $/;"	f
+SSL_to_server_init	testfake/ssl_mid.c	/^SSL* SSL_to_server_init(int socket) $/;"	f
+SSL_to_server_init	testfake2/ssl_mid.c	/^SSL* SSL_to_server_init(int socket) $/;"	f
+SSL_to_server_init	testfake3/ssl_mid.c	/^SSL* SSL_to_server_init(int socket) $/;"	f
 ShowCerts	ssl_client.c	/^void ShowCerts(SSL * ssl) $/;"	f
+ShowCerts	testfake/ssl_client.c	/^void ShowCerts(SSL * ssl) $/;"	f
+ShowCerts	testfake2/ssl_client.c	/^void ShowCerts(SSL * ssl) $/;"	f
+ShowCerts	testfake3/ssl_client.c	/^void ShowCerts(SSL * ssl) $/;"	f
 create_fake_certificate	ssl_mid.c	/^X509* create_fake_certificate(SSL* ssl_to_server, EVP_PKEY *key) $/;"	f
+create_fake_certificate	testfake/ssl_client.c	/^X509* create_fake_certificate(SSL* ssl_to_server, EVP_PKEY *key)$/;"	f
+create_fake_certificate	testfake/ssl_mid.c	/^X509* create_fake_certificate(SSL* ssl_to_server, EVP_PKEY *key) $/;"	f
+create_fake_certificate	testfake2/ssl_client.c	/^X509* create_fake_certificate(SSL* ssl_to_server, EVP_PKEY *key)$/;"	f
+create_fake_certificate	testfake2/ssl_mid.c	/^X509* create_fake_certificate(SSL* ssl_to_server, EVP_PKEY *key) $/;"	f
+create_fake_certificate	testfake3/ssl_client.c	/^X509* create_fake_certificate(SSL* ssl_to_server, EVP_PKEY *key)$/;"	f
+create_fake_certificate	testfake3/ssl_mid.c	/^X509* create_fake_certificate(SSL* ssl_to_server, EVP_PKEY *key) $/;"	f
 create_key	ssl_mid.c	/^EVP_PKEY* create_key() $/;"	f
+create_key	testfake/ssl_client.c	/^ EVP_PKEY* create_key() $/;"	f
+create_key	testfake/ssl_mid.c	/^EVP_PKEY* create_key() $/;"	f
+create_key	testfake2/ssl_client.c	/^ EVP_PKEY* create_key() $/;"	f
+create_key	testfake2/ssl_mid.c	/^EVP_PKEY* create_key() $/;"	f
+create_key	testfake3/ssl_client.c	/^ EVP_PKEY* create_key() $/;"	f
+create_key	testfake3/ssl_mid.c	/^EVP_PKEY* create_key() $/;"	f
 error	ssl_mid.c	33;"	d	file:
+error	testfake/ssl_mid.c	33;"	d	file:
+error	testfake2/ssl_mid.c	33;"	d	file:
+error	testfake3/ssl_mid.c	33;"	d	file:
 get_socket_to_client	ssl_mid.c	/^int get_socket_to_client(int socket, struct sockaddr_in* original_server_addr) $/;"	f
+get_socket_to_client	testfake/ssl_mid.c	/^int get_socket_to_client(int socket, struct sockaddr_in* original_server_addr) $/;"	f
+get_socket_to_client	testfake2/ssl_mid.c	/^int get_socket_to_client(int socket, struct sockaddr_in* original_server_addr) $/;"	f
+get_socket_to_client	testfake3/ssl_mid.c	/^int get_socket_to_client(int socket, struct sockaddr_in* original_server_addr) $/;"	f
 get_socket_to_server	ssl_mid.c	/^int get_socket_to_server(struct sockaddr_in* original_server_addr) $/;"	f
+get_socket_to_server	testfake/ssl_mid.c	/^int get_socket_to_server(struct sockaddr_in* original_server_addr) $/;"	f
+get_socket_to_server	testfake2/ssl_mid.c	/^int get_socket_to_server(struct sockaddr_in* original_server_addr) $/;"	f
+get_socket_to_server	testfake3/ssl_mid.c	/^int get_socket_to_server(struct sockaddr_in* original_server_addr) $/;"	f
 main	dsa_signed.c	/^int main(int argc, char** argv) $/;"	f
 main	md5.c	/^int main(int argc, char** argv) $/;"	f
 main	rsa_crypto.c	/^int main(int argc, char** argv) $/;"	f
@@ -26,8 +83,32 @@ main	rsa_keygen.c	/^int main() $/;"	f
 main	ssl_client.c	/^int main(int argc, char * *argv) $/;"	f
 main	ssl_mid.c	/^int main() $/;"	f
 main	ssl_server.c	/^int main(int argc, char * *argv) $/;"	f
+main	testfake/ssl_client.c	/^int main(int argc, char * *argv) $/;"	f
+main	testfake/ssl_mid.c	/^int main() $/;"	f
+main	testfake/ssl_server.c	/^int main(int argc, char * *argv) $/;"	f
+main	testfake2/ssl_client.c	/^int main(int argc, char * *argv) $/;"	f
+main	testfake2/ssl_mid.c	/^int main() $/;"	f
+main	testfake2/ssl_server.c	/^int main(int argc, char * *argv) $/;"	f
+main	testfake3/ssl_client.c	/^int main(int argc, char * *argv) $/;"	f
+main	testfake3/ssl_mid.c	/^int main() $/;"	f
+main	testfake3/ssl_server.c	/^int main(int argc, char * *argv) $/;"	f
 socket_to_client_init	ssl_mid.c	/^int socket_to_client_init(short int port) $/;"	f
+socket_to_client_init	testfake/ssl_mid.c	/^int socket_to_client_init(short int port) $/;"	f
+socket_to_client_init	testfake2/ssl_mid.c	/^int socket_to_client_init(short int port) $/;"	f
+socket_to_client_init	testfake3/ssl_mid.c	/^int socket_to_client_init(short int port) $/;"	f
 sum	ssl_mid.c	/^int sum = 1;$/;"	v
+sum	testfake/ssl_mid.c	/^int sum = 1;$/;"	v
+sum	testfake2/ssl_mid.c	/^int sum = 1;$/;"	v
+sum	testfake3/ssl_mid.c	/^int sum = 1;$/;"	v
 timeout	ssl_mid.c	/^struct timeval timeout = { 0, 10000000 };$/;"	v	typeref:struct:timeval
+timeout	testfake/ssl_mid.c	/^struct timeval timeout = { 0, 10000000 };$/;"	v	typeref:struct:timeval
+timeout	testfake2/ssl_mid.c	/^struct timeval timeout = { 0, 10000000 };$/;"	v	typeref:struct:timeval
+timeout	testfake3/ssl_mid.c	/^struct timeval timeout = { 0, 10000000 };$/;"	v	typeref:struct:timeval
 transfer	ssl_mid.c	/^int transfer(SSL *ssl_to_client, SSL *ssl_to_server) $/;"	f
+transfer	testfake/ssl_mid.c	/^int transfer(SSL *ssl_to_client, SSL *ssl_to_server) $/;"	f
+transfer	testfake2/ssl_mid.c	/^int transfer(SSL *ssl_to_client, SSL *ssl_to_server) $/;"	f
+transfer	testfake3/ssl_mid.c	/^int transfer(SSL *ssl_to_client, SSL *ssl_to_server) $/;"	f
 warning	ssl_mid.c	30;"	d	file:
+warning	testfake/ssl_mid.c	30;"	d	file:
+warning	testfake2/ssl_mid.c	30;"	d	file:
+warning	testfake3/ssl_mid.c	30;"	d	file:
